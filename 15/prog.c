@@ -3,15 +3,19 @@
 #include <string.h>
 #include <ctype.h>
 
-void part1() {}
-
 int main(void) {
-    char str[1024];
+    char str[25000];
     int sum = 0;
-    while(scanf("%s\n", str) > 0) {
-        printf("%s\n",str);
-        sum++;
-    } 
+    scanf("%s\n", str);
+    char*p=strtok(str, ",");
+    while(p!=NULL) {
+        int c = 0;
+        for(int i = 0; i < strlen(p); i++) {
+            c = (c+p[i])*17 % 256;
+        }
+        sum+=c;
+        p=strtok(NULL, ",");
+    }
     printf("%d\n", sum);
 
     return 0;
